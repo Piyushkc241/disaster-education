@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot Widget</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Demo Website Content -->
+    <div class="website-content">
+        <header>
+            <h1>Welcome to My Website</h1>
+            <p>This is a demo page to showcase the chat widget</p>
+        </header>
+        <main>
+            <section>
+                <h2>About Us</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </section>
+            <section>
+                <h2>Our Services</h2>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <!-- The Chat Window (hidden by default) -->
+        <div class="chat-container" id="chatContainer">
+            <!-- Header with title and close button -->
+            <div class="chat-header">
+                <div class="header-content">
+                    <h1>🤖 AI Assistant</h1>
+                    <p>We're here to help!</p>
+                </div>
+                <button class="close-button" id="closeButton">✕</button>
+            </div>
+            
+            <!-- Messages area -->
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        <strong>Bot:</strong> Hello! I'm your AI assistant. How can I help you today?
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Input area -->
+            <div class="chat-input-container">
+                <form id="chatForm">
+                    <input 
+                        type="text" 
+                        id="userInput" 
+                        placeholder="Type your message..." 
+                        autocomplete="off"
+                        required
+                    />
+                    <button type="submit" id="sendButton">
+                        <span>Send</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Chat Toggle Button (always visible) -->
+        <button class="chat-toggle" id="chatToggle">
+            <span class="chat-icon">💬</span>
+            <span class="notification-badge" id="notificationBadge">1</span>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
