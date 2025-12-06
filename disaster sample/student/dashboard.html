@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard - Disaster Management App</title>
+
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="layout">
+      <!-- ========== SIDEBAR ========== -->
+      <aside class="sidebar">
+        <!-- Clickable logo + text -->
+        <a href="../index.html" class="sidebar-logo">
+          <img src="../logo.png" alt="Disaster Learning Hub Logo" />
+          <span>Disaster Learning Hub</span>
+        </a>
+
+        <!-- Sidebar navigation -->
+        <nav class="sidebar-nav">
+          <a href="#hero" class="active">
+            <i class="fa fa-gauge"></i> Dashboard
+          </a>
+          <a href="#games">
+            <i class="fa fa-gamepad"></i> Games
+          </a>
+          <a href="#chatbot">
+            <i class="fa fa-robot"></i> Chatbot
+          </a>
+        </nav>
+
+        <!-- Logout button at bottom -->
+        <button id="logoutBtn" class="sidebar-logout">
+          <i class="fa fa-sign-out-alt"></i>
+          Logout
+        </button>
+      </aside>
+
+      <!-- ========== MAIN AREA ========== -->
+      <div class="main-area">
+        <!-- Hero/Dashboard Header -->
+        <section id="hero" class="dashboard-hero">
+          <div class="overlay"></div>
+          <div class="hero-content">
+            <h1>Welcome, Student!</h1>
+            <p>Explore Disaster Management with Fun Activities</p>
+          </div>
+        </section>
+
+        <!-- Dashboard Content -->
+        <section class="dashboard-content" id="games">
+          <div class="dashboard-grid">
+            <!-- Learn with Games -->
+            <div class="dashboard-card">
+              <h2>Learn with Games</h2>
+              <p>
+                Play interactive games to learn about earthquake safety, flood
+                preparedness, and more!
+              </p>
+              <button class="cta-btn" onclick="startGame()">Start Game</button>
+            </div>
+
+            <!-- Chatbot Assistant -->
+            <div class="dashboard-card" id="chatbot">
+              <h2><i class="fa fa-robot"></i> Chatbot Assistant</h2>
+              <p>Ask questions about disasters and safety tips.</p>
+
+              <div class="chat-container">
+                <div id="chatMessages" class="chat-messages">
+                  <div class="message bot-message">
+                    <div class="bubble">
+                      Hi! Main hoon <strong>DisasterBot</strong>. Kya jaanna
+                      hai? (Try: earthquake, flood, fire)
+                    </div>
+                  </div>
+                </div>
+                <div class="chat-input-container">
+                  <input
+                    type="text"
+                    id="chatInput"
+                    class="chat-input"
+                    placeholder="Type your query..."
+                    onkeypress="handleKeyPress(event)"
+                  />
+                  <button class="send-btn" onclick="sendMessage()">
+                    <i class="fa fa-paper-plane"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ========== SCRIPT ========== -->
+    <script>
+      // Logout
+      document.getElementById("logoutBtn").addEventListener("click", function () {
+        window.location.href = "../index.html";
+      });
+
+      // Game placeholder
+      function startGame() {
+        alert("Game starting soon!");
+      }
+
+      // Chatbot logic
+      function sendMessage() {
+        const input = document.getElementById("chatInput");
+        const message = input.value.trim();
+        if (!message) return;
+
+        addMessage(message, "user");
+        input.value = "";
+
+        setTimeout(() => {
+          const response = getBotResponse(message.toLowerCase());
+          addMessage(response, "bot");
+        }, 800);
+      }
+
+      function handleKeyPress(event) {
+        if (event.key === "Enter") {
+          sendMessage();
+        }
+      }
+
+      function addMessage(text, sender) {
+        const messagesDiv = document.getElementById("chatMessages");
+        const messageDiv = document.createElement("div");
+        messageDiv.className = `message ${sender}-message`;
+        messageDiv.innerHTML = `<div class="bubble">${text}</div>`;
+        messagesDiv.appendChild(messageDiv);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+
+      function getBotResponse(query) {
+  if (query.includes("earthquake")) {
+    return "Earthquake Tip 🏠: Drop, Cover, Hold On! Stay away from windows and heavy objects. After shaking stops, move carefully outside.";
+  } 
+  else if (query.includes("flood")) {
+    return "Flood Safety 🌊: Move to higher ground, avoid driving or walking through water. Just 6 inches of moving water can knock you down!";
+  } 
+  else if (query.includes("fire") || query.includes("wildfire")) {
+    return "Fire Safety 🔥: If clothes catch fire — STOP, DROP & ROLL! Stay low to avoid smoke.";
+  }
+  else if (query.includes("cyclone") || query.includes("hurricane")) {
+    return "Cyclone Advisory 🌀: Stay indoors, keep emergency kit ready, avoid standing near windows, and disconnect electrical appliances.";
+  }
+  else if (query.includes("tsunami")) {
+    return "Tsunami Warning 🌊: Move immediately to higher ground. Do NOT wait for official instructions if you feel strong shaking near the coast.";
+  }
+  else if (query.includes("landslide")) {
+    return "Landslide Safety ⛰: Move away from steep slopes, watch for cracks or unusual sounds. If indoors, move to upper floors.";
+  }
+  else if (query.includes("cold") || query.includes("winter") || query.includes("blizzard")) {
+    return "Cold Wave Advice ❄: Wear layered warm clothing, stay indoors during extremely low temperatures, and drink warm fluids.";
+  }
+  else if (query.includes("heatwave") || query.includes("heat wave") || query.includes("hot")) {
+    return "Heatwave Care ☀: Drink ORS or water regularly, avoid going out between 12–4 PM, and wear light cotton clothes.";
+  }
+  else if (query.includes("emergency kit") || query.includes("kit")) {
+    return "Emergency Kit Checklist 🎒:\n• Water bottles\n• Flashlight & batteries\n• First Aid\n• Whistle\n• Power bank\n• Dry snacks\n• Important documents";
+  }
+  else if (query.includes("contact") || query.includes("helpline")) {
+    return "Emergency Helplines 🚑:\n• National Disaster Helpline: 108\n• Fire: 101\n• Police: 100\n• Disaster Management Control Room: 1070";
+  }
+  else if (query.includes("prepare") || query.includes("tips")) {
+    return "Preparation Tips 📦:\n— Create emergency plan for your family\n— Know nearest shelter & hospital\n— Keep emergency contact list\n— Store food & water for 3 days";
+  }
+  else if (query.includes("who are you") || query.includes("your name")) {
+    return "I am DisasterBot 🤖 — Your safety assistant. Ask me about disasters, tips, helplines, or how to stay prepared!";
+  }
+  else if (query.includes("thank")) {
+    return "Always happy to help 🙌 Stay safe & prepared!";
+  }
+  else {
+    return "Good question! 😊 You can ask me about:\n• Earthquakes\n• Floods\n• Heatwaves\n• Cyclones\n• Fire Safety\n• Emergency Kit\n• Helpline Numbers\n\nTry typing: *What should I do in a heatwave?*";
+  }
+}
+
+    </script>
+  </body>
+</html>
+

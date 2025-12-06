@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Teacher Login • Disaster Learning Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body class="auth-page">
+
+  <div class="auth-wrapper">
+    <!-- LEFT: Main form -->
+    <div class="auth-main">
+      <div class="auth-tag">
+        <i class="fa-solid fa-shield-halved"></i>
+        Secure Teacher Access
+      </div>
+
+      <h1 class="auth-title">Teacher Portal Login</h1>
+      <p class="auth-subtitle">
+        Sign in to manage course content, assignments, and disaster preparedness
+        training modules for your students.
+      </p>
+
+      <form id="teacherLoginForm" class="auth-form">
+        <div class="form-group">
+          <label for="teacherEmail">Institute Email</label>
+          <input
+            type="email"
+            id="teacherEmail"
+            placeholder="teacher@institute.edu"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="teacherPassword">Password</label>
+          <input
+            type="password"
+            id="teacherPassword"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+
+        <div class="auth-actions">
+          <label class="auth-remember">
+            <input type="checkbox" id="teacherRemember" />
+            Remember me
+          </label>
+
+          <a href="#" class="auth-link">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top: 0.9rem;">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          Log in as Teacher
+        </button>
+
+        <p class="auth-status" id="teacherLoginStatus"></p>
+
+        <p style="margin-top: 0.6rem; font-size: 0.8rem;">
+          Not a teacher? <a href="../student/login.html" class="auth-link">Log in as student</a>
+        </p>
+        <p style="margin-top: 0.2rem; font-size: 0.8rem;">
+          <a href="../index.html" class="auth-link">← Back to main portal</a>
+        </p>
+      </form>
+    </div>
+
+    <!-- RIGHT: Info / highlights -->
+    <aside class="auth-side">
+      <div class="auth-side-header">
+        <div class="auth-role-pill">
+          <i class="fa-solid fa-chalkboard-user"></i>
+          Teacher Dashboard
+        </div>
+        <h2 class="auth-side-title">Guide your class through crises.</h2>
+        <p class="auth-side-text">
+          Create learning paths, upload resources, and track your students’ progress
+          on disaster readiness activities.
+        </p>
+
+        <ul class="auth-side-list">
+          <li>
+            <i class="fa-solid fa-check-circle"></i>
+            <span>Plan drills and mock disaster scenarios with your classes.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-check-circle"></i>
+            <span>Share step-by-step safety guidelines and video content.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-check-circle"></i>
+            <span>Review student responses and knowledge checks in one place.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="auth-side-footer">
+        Tip: Use your official institute email ID. For access issues, contact the
+        Disaster Learning Hub admin.
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const teacherForm = document.getElementById("teacherLoginForm");
+    const teacherStatus = document.getElementById("teacherLoginStatus");
+
+    if (teacherForm) {
+      teacherForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById("teacherEmail").value.trim();
+        const password = document.getElementById("teacherPassword").value.trim();
+
+        if (!email || !password) {
+          teacherStatus.textContent = "Please enter both email and password.";
+          teacherStatus.className = "auth-status error";
+          return;
+        }
+
+        teacherStatus.textContent = "Verifying credentials...";
+        teacherStatus.className = "auth-status";
+
+        setTimeout(() => {
+          teacherStatus.textContent = "Login successful (demo). Redirecting to teacher dashboard...";
+          teacherStatus.className = "auth-status success";
+
+          setTimeout(() => {
+            // TODO: change to your real dashboard path
+            window.location.href = "dashboard.html";
+          }, 900);
+        }, 700);
+      });
+    }
+  </script>
+
+</body>
+</html>

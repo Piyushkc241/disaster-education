@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Dashboard - Disaster Management App</title>
+
+    <!-- Main shared CSS -->
+    <link rel="stylesheet" href="../style.css" />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="layout">
+      <!-- ========== SIDEBAR ========== -->
+      <aside class="sidebar">
+        <!-- Clickable logo -->
+        <a href="../index.html" class="sidebar-logo">
+          <img src="../logo.png" alt="Disaster Learning Hub Logo" />
+          <span>Disaster Learning Hub</span>
+        </a>
+
+        <!-- Sidebar navigation -->
+        <nav class="sidebar-nav">
+          <a href="#hero" class="active">
+            <i class="fa fa-gauge"></i> Dashboard
+          </a>
+          <a href="#modules">
+            <i class="fa fa-book-open"></i> Modules
+          </a>
+          <a href="#quizzes">
+            <i class="fa fa-question-circle"></i> Quizzes
+          </a>
+          <a href="#drills">
+            <i class="fa fa-people-group"></i> Mock Drills
+          </a>
+        </nav>
+
+        <!-- Logout button -->
+        <button id="logoutBtn" class="sidebar-logout">
+          <i class="fa fa-sign-out-alt"></i>
+          Logout
+        </button>
+      </aside>
+
+      <!-- ========== MAIN AREA ========== -->
+      <div class="main-area">
+        <!-- Hero Section -->
+        <section id="hero" class="dashboard-hero">
+          <div class="overlay"></div>
+          <div class="hero-content">
+            <h1>Welcome, Teacher!</h1>
+            <p>Manage and Teach Disaster Preparedness</p>
+          </div>
+        </section>
+
+        <!-- Dashboard Content -->
+        <section class="dashboard-content">
+          <div class="dashboard-grid">
+            <!-- Educational Modules -->
+            <div class="dashboard-card" id="modules">
+              <h2><i class="fa fa-book-open"></i> Educational Modules</h2>
+              <p>
+                Access detailed lessons, presentations, and activities on
+                disaster management for your classroom.
+              </p>
+              <button class="cta-btn" onclick="viewModules()">View Modules</button>
+            </div>
+
+            <!-- Quizzes -->
+            <div class="dashboard-card" id="quizzes">
+              <h2><i class="fa fa-question-circle"></i> Create Quizzes</h2>
+              <p>
+                Design quizzes and assessments to check students' understanding
+                of disaster preparedness.
+              </p>
+              <button class="cta-btn" onclick="createQuiz()">Create Quiz</button>
+            </div>
+
+            <!-- Mock Drill Instructions -->
+            <div class="dashboard-card" id="drills">
+              <h2><i class="fa fa-people-group"></i> Mock Drill Instructions</h2>
+              <p>
+                Step-by-step guides and checklists for conducting school mock
+                drills in a safe and organized way.
+              </p>
+              <button class="cta-btn" onclick="viewDrills()">View Instructions</button>
+            </div>
+
+            <!-- Extra Card (optional teacher tool) -->
+            <div class="dashboard-card">
+              <h2><i class="fa fa-chart-line"></i> Class Progress</h2>
+              <p>
+                Track student participation, quiz scores, and completion status
+                of modules. (Coming soon)
+              </p>
+              <button class="cta-btn" onclick="viewProgress()">View Progress</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ========== SCRIPT ========== -->
+    <script>
+      // Logout
+      document.getElementById("logoutBtn").addEventListener("click", function () {
+        window.location.href = "../index.html";
+      });
+
+      // Placeholder Functions
+      function viewModules() {
+        alert("Modules loading... (Placeholder)");
+      }
+
+      function createQuiz() {
+        alert("Quiz creator loading... (Placeholder)");
+      }
+
+      function viewDrills() {
+        alert("Drill instructions loading... (Placeholder)");
+      }
+
+      function viewProgress() {
+        alert("Progress dashboard coming soon!");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Login • Disaster Learning Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body class="auth-page">
+
+  <div class="auth-wrapper">
+    <!-- LEFT: Main form -->
+    <div class="auth-main">
+      <div class="auth-tag">
+        <i class="fa-solid fa-graduation-cap"></i>
+        Student Access
+      </div>
+
+      <h1 class="auth-title">Student Login</h1>
+      <p class="auth-subtitle">
+        Log in to access disaster readiness lessons, quizzes, and activity
+        tasks assigned by your teachers.
+      </p>
+
+      <form id="studentLoginForm" class="auth-form">
+        <div class="form-group">
+          <label for="studentId">Student ID / Roll No.</label>
+          <input
+            type="text"
+            id="studentId"
+            placeholder="e.g., 21CS001"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="studentPassword">Password</label>
+          <input
+            type="password"
+            id="studentPassword"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+
+        <div class="auth-actions">
+          <label class="auth-remember">
+            <input type="checkbox" id="studentRemember" />
+            Keep me signed in
+          </label>
+
+          <a href="#" class="auth-link">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top: 0.9rem;">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          Log in as Student
+        </button>
+
+        <p class="auth-status" id="studentLoginStatus"></p>
+
+        <p style="margin-top: 0.6rem; font-size: 0.8rem;">
+          Are you a teacher? <a href="../teacher/login.html" class="auth-link">Log in as teacher</a>
+        </p>
+        <p style="margin-top: 0.2rem; font-size: 0.8rem;">
+          <a href="../index.html" class="auth-link">← Back to main portal</a>
+        </p>
+      </form>
+    </div>
+
+    <!-- RIGHT: Info / highlights -->
+    <aside class="auth-side">
+      <div class="auth-side-header">
+        <div class="auth-role-pill">
+          <i class="fa-solid fa-user-graduate"></i>
+          Student Learning Space
+        </div>
+        <h2 class="auth-side-title">Learn how to stay safe, step by step.</h2>
+        <p class="auth-side-text">
+          Complete interactive modules, watch quick guides, and test yourself on
+          what to do during floods, earthquakes, fires and more.
+        </p>
+
+        <ul class="auth-side-list">
+          <li>
+            <i class="fa-solid fa-check-circle"></i>
+            <span>Track your completion of disaster safety topics.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-check-circle"></i>
+            <span>Attempt quizzes and see your progress instantly.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-check-circle"></i>
+            <span>Earn badges and certificates for preparedness activities.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="auth-side-footer">
+        This portal is for educational purposes. For real emergencies, always
+        follow instructions from local authorities and official helplines.
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const studentForm = document.getElementById("studentLoginForm");
+    const studentStatus = document.getElementById("studentLoginStatus");
+
+    if (studentForm) {
+      studentForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const studentId = document.getElementById("studentId").value.trim();
+        const password = document.getElementById("studentPassword").value.trim();
+
+        if (!studentId || !password) {
+          studentStatus.textContent = "Please enter both ID and password.";
+          studentStatus.className = "auth-status error";
+          return;
+        }
+
+        studentStatus.textContent = "Checking details...";
+        studentStatus.className = "auth-status";
+
+        setTimeout(() => {
+          studentStatus.textContent = "Login successful (demo). Redirecting to student dashboard...";
+          studentStatus.className = "auth-status success";
+
+          setTimeout(() => {
+            // TODO: change to your real student dashboard path
+            window.location.href = "dashboard.html";
+          }, 900);
+        }, 700);
+      });
+    }
+  </script>
+
+</body>
+</html>
