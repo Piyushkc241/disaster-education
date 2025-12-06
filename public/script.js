@@ -117,7 +117,7 @@ window.addEventListener('keydown', (e) => {
   if (e.altKey && e.key.toLowerCase() === 'c') toggleChat();
 });
 
-
+ ch
 if (chatContainer.classList.contains('open')) {
   userInput.focus();
 }
